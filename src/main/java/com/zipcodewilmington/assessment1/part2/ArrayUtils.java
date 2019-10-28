@@ -3,7 +3,7 @@ package com.zipcodewilmington.assessment1.part2;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import com.zipcodewilmington.assessment1.part2.MultiplesDeleter;
+
 
 
 /**
@@ -43,9 +43,9 @@ public class ArrayUtils {
                 newArray.add(objectArray[i]);
             }
         }
-        Object[] objects = newArray.toArray();
+       // Object[] objects = newArray.toArray();
 
-        return objects; // need to change this
+        return castingMethodtoInteger(newArray); // need to change this
     }
 
     /**
@@ -55,8 +55,20 @@ public class ArrayUtils {
      */
     public static Object getMostCommon(Object[] objectArray)
     {
+        int newCount = 0;
+        int mostCount = 0;
+        Object mostCommon = new Object();
+        for (int i=0 ; i<objectArray.length ; i++)
+        {
+            newCount = getNumberOfOccurrences(objectArray, objectArray[i]);
+            if (newCount > mostCount)
+            {
+                mostCount = newCount;
+                mostCommon = objectArray[i];
+            }
 
-        return null;
+        }
+        return mostCommon;
     }
 
 
@@ -65,8 +77,21 @@ public class ArrayUtils {
      * @return the least frequently occurring object in the array
      * given an array of objects, named `objectArray` return the least frequently occuring object in the array
      */
-    public static Object getLeastCommon(Object[] objectArray) {
-        return null;
+    public static Object getLeastCommon(Object[] objectArray)
+    {
+          int newCount = 0;
+          int leastCount = 0;
+          Object leastCommon = new Object();
+          for (int i=0 ; i<objectArray.length ; i++)
+          {
+              newCount = getNumberOfOccurrences(objectArray, objectArray[i]);
+              if (newCount < leastCount)
+              {
+                  leastCount = newCount;
+                  leastCommon = Integer.valueOf(objectArray[i].toString());
+              }
+          }
+      return (Integer)leastCommon;
     }
 
     /**
@@ -75,23 +100,39 @@ public class ArrayUtils {
      * @return an array containing all elements in `objectArray` and `objectArrayToAdd`
      * given two arrays `objectArray` and `objectArrayToAdd`, return an array containing all elements in `objectArray` and `objectArrayToAdd`
      */
-    public static Object[] mergeArrays(Object[] objectArray, Object[] objectArrayToAdd) {
+    public static Integer[] mergeArrays(Object[] objectArray, Object[] objectArrayToAdd) {
 
         int objectArrayLen  = objectArray.length;
         int objectArrayToAddLen = objectArrayToAdd.length;
-        Object[] mergeArray = new Object[objectArrayLen + objectArrayToAddLen];
+       // Object[] mergeArray = new Object[objectArrayLen + objectArrayToAddLen];
+        ArrayList newArray = new ArrayList();
 
         for (int i=0 ; i< objectArrayLen; i++)
         {
-            mergeArray[i] = objectArray[i];
+          //  mergeArray[i] = objectArray[i];
+            newArray.add(objectArray[i]);
         }
 
         for (int i=0 ; i< objectArrayToAddLen; i++)
         {
-            mergeArray[i] = objectArrayToAdd[i];
+           // mergeArray[i] = objectArrayToAdd[i];
+            newArray.add(objectArrayToAdd[i]);
         }
 
 
-        return mergeArray;
+       // return (Integer)mergeArray;
+        return castingMethodtoInteger(newArray);
+    }
+
+    //added by usha
+    public static Integer[] castingMethodtoInteger(ArrayList al)
+    {
+        Integer[] c = new Integer[al.size()];
+        for(int i = 0; i < al.size(); i++)
+        {
+            c[i] = (Integer) al.get(i);
+        }
+        return c;
+
     }
 }
