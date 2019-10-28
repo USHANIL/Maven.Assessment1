@@ -1,7 +1,10 @@
 package com.zipcodewilmington.assessment1.part2;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import com.zipcodewilmington.assessment1.part2.MultiplesDeleter;
+
 
 /**
  * Created by leon on 2/16/18.
@@ -33,15 +36,16 @@ public class ArrayUtils {
      */
     public static Object[] removeValue(Object[] objectArray, Object objectToRemove) {
 
-        //  ArrayList newArray = new ArrayList();
-        List<Object> newArray = new ArrayList<>();
+         ArrayList newArray = new ArrayList();
+        //List<Object> newArray = new ArrayList<>();
         for (int i = 0; i < objectArray.length; i++) {
             if (!objectArray[i].equals(objectToRemove)) {
                 newArray.add(objectArray[i]);
             }
         }
         Object[] objects = newArray.toArray();
-        return objectArray; // need to change this
+
+        return objects; // need to change this
     }
 
     /**
@@ -49,7 +53,8 @@ public class ArrayUtils {
      * @return the most frequently occurring object in the array
      * given an array of objects, named `objectArray` return the most frequently occuring object in the array
      */
-    public static Object getMostCommon(Object[] objectArray) {
+    public static Object getMostCommon(Object[] objectArray)
+    {
 
         return null;
     }
@@ -71,6 +76,22 @@ public class ArrayUtils {
      * given two arrays `objectArray` and `objectArrayToAdd`, return an array containing all elements in `objectArray` and `objectArrayToAdd`
      */
     public static Object[] mergeArrays(Object[] objectArray, Object[] objectArrayToAdd) {
-        return null;
+
+        int objectArrayLen  = objectArray.length;
+        int objectArrayToAddLen = objectArrayToAdd.length;
+        Object[] mergeArray = new Object[objectArrayLen + objectArrayToAddLen];
+
+        for (int i=0 ; i< objectArrayLen; i++)
+        {
+            mergeArray[i] = objectArray[i];
+        }
+
+        for (int i=0 ; i< objectArrayToAddLen; i++)
+        {
+            mergeArray[i] = objectArrayToAdd[i];
+        }
+
+
+        return mergeArray;
     }
 }
